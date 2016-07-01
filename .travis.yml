@@ -1,6 +1,7 @@
 env:
   global:
     - PREFIX="/tmp/usr"
+    - PROCESSORS="/tmp/processors"
 
 matrix:
   include:
@@ -78,9 +79,11 @@ script:
   - make check
   - make install
   - pkg-config archc
+  - source ${PREFIX}/etc/env.sh
 
 after_success:
-
+  - git clone --depth 1 https://github.com/ArchC/arm.git ${PROCESSORS}/arm-acsim
+  - pushd ${PROCESSORS}/arm-acsim ; acsim arm.ac ; make ;  
 
 after_failure:
 
