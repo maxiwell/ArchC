@@ -3260,7 +3260,7 @@ void CreateMakefile(){
   extern int HaveTLM2IntrPorts;
 
   FILE *output;
-  char filename[] = "Makefile";
+  char filename[] = "Makefile.archc";
 
   if ( !(output = fopen( filename, "w"))){
     perror("ArchC could not open output file");
@@ -3478,7 +3478,7 @@ void CreateMakefile(){
   fprintf( output, "sim_clean: clean model_clean\n\n");
 
   fprintf( output, "distclean: sim_clean\n");
-  fprintf( output, "\trm -f main.cpp Makefile\n\n");
+  fprintf( output, "\trm -f main.cpp Makefile.archc\n\n");
 
 }
 
